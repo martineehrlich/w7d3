@@ -1,1 +1,1 @@
-json.extract! @post, :title, :body
+json.partial! "posts/post", post: @post

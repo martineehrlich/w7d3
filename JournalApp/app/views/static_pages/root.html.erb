@@ -1,1 +1,16 @@
 <h1>Scribblr</h1>
+
+<div id="root">
+
+</div>
+
+<script type='text/javascript'>
+  var collection = new JournalApp.Collections.Posts();
+  collection.fetch({
+    success: function() {
+      var indexView = new JournalApp.Views.PostsIndex({collection: collection});
+      $("#root").html(indexView.render().$el)
+    }
+  });
+
+</script>
