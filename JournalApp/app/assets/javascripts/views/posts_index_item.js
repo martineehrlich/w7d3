@@ -3,7 +3,7 @@ JournalApp.Views.PostsIndexItem = Backbone.View.extend({
   tagName: "li",
 
   initialize: function () {
-    this.listenTo(this.model, "all", this.render);
+    this.listenTo(this.model, "sync", this.render);
   },
 
   events: {

@@ -22,7 +22,7 @@ JournalApp.Views.PostForm = Backbone.View.extend({
     var attrs = $formData.post;
     this.model.set(attrs);
 
-    this.model.save(attrs, {
+    this.model.save(attrs, {wait: true,
       success: function() {
         this.collection.add(this.model);
         Backbone.history.navigate("#posts/" + this.model.get("id"),
@@ -32,6 +32,7 @@ JournalApp.Views.PostForm = Backbone.View.extend({
       error: function(model, resp) {
         $(".errors").html(resp.responseText);
       }
+
     });
   }
 

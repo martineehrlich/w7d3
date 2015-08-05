@@ -3,7 +3,7 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
   className: 'posts-list',
 
   initialize: function() {
-    this.listenTo(this.collection, "sync remove reset change", this.render);
+    this.listenTo(this.collection, "sync remove reset", this.render);
   },
 
 
