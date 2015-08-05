@@ -2,6 +2,9 @@
 <p>
   <%= post.escape("body") %>
 </p>
+
+<br>
+<button class='delete-post'>Delete this post</button>
 <br>
 
 <a class='edit-post' href='#posts/<%= post.escape("id") %>/edit'>Edit Post</a>
