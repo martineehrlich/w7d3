@@ -1,4 +1,8 @@
 JournalApp.Views.PostsIndex = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(this.collection, "remove reset", this.render);
+  },
+
   template: JST["posts_index"],
 
   render: function () {
@@ -6,9 +10,8 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
 
     var view = this;
     this.collection.each(function(post) {
-      var $li = $("<li>").text(post.escape("title"));
-
-      $ul.append($li);
+      var item = new JournalApp.Views.PostsIndexItem({model: post});
+      $ul.append(item.render().$el);
     });
 
     this.$el.html($ul);

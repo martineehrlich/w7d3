@@ -20,6 +20,12 @@ class PostsController < ApplicationController
     render :show
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    render :show
+  end
+
   def post_params
     params.require(:post).permit(:title, :body)
   end

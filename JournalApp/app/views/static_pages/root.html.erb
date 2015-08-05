@@ -10,7 +10,9 @@
     success: function() {
       var indexView = new JournalApp.Views.PostsIndex({collection: collection});
       $("#root").html(indexView.render().$el)
-    }
+    },
+
+    reset: true
   });
 
 </script>
