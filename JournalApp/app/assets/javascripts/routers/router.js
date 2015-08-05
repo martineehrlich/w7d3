@@ -1,6 +1,9 @@
 JournalApp.Routers.Router = Backbone.Router.extend({
-  initialize: function() {
+  initialize: function(options) {
     this.collection = new JournalApp.Collections.Posts();
+    this.collection.fetch();
+    this.$sidebar = options.$sidebar;
+    this.$content = options.$content;
   },
 
   routes: {
@@ -11,14 +14,9 @@ JournalApp.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
-    this.collection.fetch({
-      success: function() {
-        var indexView = new JournalApp.Views.PostsIndex({collection: this.collection});
-        this.swap(indexView);
-      }.bind(this),
-
-      reset: true
-    });
+    var view = new JournalApp.Views.PostsIndex({collection: this.collection});
+    this.swapSidebar(view);
+    this._view && this._view.remove();
   },
 
   show: function (id) {
@@ -45,7 +43,13 @@ JournalApp.Routers.Router = Backbone.Router.extend({
 
   swap: function (view) {
     this._view && this._view.remove();
-    $("#root").html(view.render().$el);
+    this.$content.html(view.render().$el);
     this._view = view;
+  },
+
+  swapSidebar: function (view) {
+    this._sideBarView && this._sideBarView.remove();
+    this.$sidebar.html(view.render().$el);
+    this._sideBarView = view;
   }
 });

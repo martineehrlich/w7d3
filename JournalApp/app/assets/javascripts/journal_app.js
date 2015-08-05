@@ -4,7 +4,13 @@ window.JournalApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new JournalApp.Routers.Router();
+    // var posts = new JournalApp.Collections.Posts();
+    // posts.fetch({ wait: true });
+
+    var $sidebar = $("#sidebar");
+    var $content = $("#content");
+    
+    new JournalApp.Routers.Router({$sidebar: $sidebar, $content: $content});
     Backbone.history.start();
   }
 };
