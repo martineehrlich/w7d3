@@ -1,11 +1,20 @@
-<h2 data-attrname="title" class='post-content'><%= post.escape("title") %></h2>
-<p data-attrname="body" class='post-content'>
-  <%= post.escape("body") %>
-</p>
+<div class='show-content'>
+  <h2 data-attrname="title" class='post-content'><%= post.escape("title") %></h2>
+  <p data-attrname="body" class='post-content'>
+    <%= post.escape("body") %>
+  </p>
+</div>
 
-<br>
-<button class='delete-post'>Delete this post</button>
-<br>
+<div class='navlinks'>
+  <br>
+  <button class='delete-post btn-warning'>Delete this post</button>
+  <br>
 
-<a class='edit-post' href='#posts/<%= post.escape("id") %>/edit'>Edit Post</a>
-<a href="">Back to Index</a>
+  <a class='edit-post' href='#posts/<%= post.escape("id") %>/edit'>
+    Edit Post
+  </a>
+   |
+  <a href="">
+    Back to Index
+  </a>
+</div>
